@@ -1,0 +1,43 @@
+{
+  "sessions": [
+    {
+      "month": "March 2026",
+      "title": "Global Logistics & Infrastructure Scaling",
+      "speaker": "Jane Doe",
+      "summary": "An in-depth look at transitioning from regional to global deployment models and infrastructure readiness protocols.",
+      "recording": "https://example.com/recording1",
+      "deck": "https://example.com/deck1"
+    },
+    {
+      "month": "February 2026",
+      "title": "Edge Computing Readiness",
+      "speaker": "Marcus Aurelius",
+      "summary": "Exploration of edge latency benchmarks and readiness protocols for low-bandwidth regions.",
+      "recording": "#",
+      "deck": "#"
+    },
+    {
+      "month": "January 2026",
+      "title": "Compliance Standards Update",
+      "speaker": "Sarah Chen",
+      "summary": "A comprehensive review of GDPR and CCPA updates affecting global deployment pipelines in Q1.",
+      "recording": "#",
+      "deck": "#"
+    }
+  ],
+  "events": {
+    "2026-03-12": {
+      "title": "GSR Monthly Meet",
+      "speaker": "Jane Doe",
+      "type": "booked"
+    },
+    "2026-04-14": {
+      "title": "AVAILABLE",
+      "type": "available"
+    },
+    "2026-05-12": {
+      "title": "AVAILABLE",
+      "type": "available"
+    }
+  }
+}
