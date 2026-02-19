@@ -25,15 +25,17 @@
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230064d2' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
-        /* FIX: Increased padding-right and display to prevent clipping of italic descenders and 'B' */
+        /* FIX: Robust padding and visible overflow to prevent the 'B' in Hub from cutting off */
         .ebay-gradient-text {
             background: linear-gradient(to right, var(--ebay-blue), var(--ebay-red), var(--ebay-yellow), var(--ebay-green));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
-            padding-right: 0.4em; 
+            padding-right: 1.2em; 
+            margin-right: -1.0em;
             padding-bottom: 0.1em;
             font-style: italic;
+            overflow: visible !important;
         }
         
         .glass-nav { 
@@ -51,7 +53,6 @@
                 radial-gradient(at 0% 100%, rgba(229, 50, 56, 0.1) 0px, transparent 50%);
         }
 
-        /* Hover Interaction Effects */
         .card-glow-blue:hover { box-shadow: 0 10px 30px -10px rgba(0, 100, 210, 0.4); transform: translateY(-8px); border-color: var(--ebay-blue); }
         .card-glow-red:hover { box-shadow: 0 10px 30px -10px rgba(229, 50, 56, 0.3); transform: translateY(-8px); border-color: var(--ebay-red); }
         .card-glow-yellow:hover { box-shadow: 0 10px 30px -10px rgba(245, 175, 2, 0.3); transform: translateY(-8px); border-color: var(--ebay-yellow); }
@@ -70,13 +71,13 @@
             content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 40%; height: 4px; background: var(--ebay-blue); border-radius: 10px;
         }
 
-        /* LOGO BOX: Increased size slightly and ensured object-fit cover for circular images */
+        /* LOGO BOX FIX: Simplified and ensured dimensions */
         .logo-container {
-            width: 64px; height: 64px; border-radius: 50%; background: white; padding: 2px; box-shadow: 0 4px 10px rgba(0, 100, 210, 0.1);
+            width: 60px; height: 60px; border-radius: 50%; background: white; padding: 0; box-shadow: 0 4px 10px rgba(0, 100, 210, 0.1);
             transition: transform 0.3s; display: flex; align-items: center; justify-content: center; overflow: hidden;
             border: 2px solid #f1f5f9; flex-shrink: 0;
         }
-        .logo-container img { width: 100%; height: 100%; object-fit: cover; }
+        .logo-container img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .logo-container:hover { transform: scale(1.1) rotate(5deg); }
 
         .stat-ring {
@@ -95,10 +96,11 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* FIX: Increased line-height to prevent vertical clipping */
+        /* HERO HEADING FIX: overflow visible is key here */
         .hero-heading {
-            line-height: 1.3;
-            padding-bottom: 10px;
+            line-height: 1.4;
+            padding: 10px 0;
+            overflow: visible !important;
         }
     </style>
 </head>
@@ -109,7 +111,7 @@
         <div class="flex items-center gap-5">
             <div class="logo-container">
                 <!-- Branding: Real Logo file linked here -->
-                <img src="image_3efc88.jpg" alt="Global Service Readiness Logo" onerror="this.src='https://ui-avatars.com/api/?name=GSR&background=0064d2&color=fff'">
+                <img src="image_3efc88.jpg" alt="GSR Logo" onerror="this.src='https://ui-avatars.com/api/?name=GSR&background=0064d2&color=fff'">
             </div>
             <div class="hidden md:block">
                 <h1 class="font-black text-xl tracking-tighter text-slate-900 leading-none">Global Service Readiness - Learning Hub</h1>
@@ -267,7 +269,7 @@
                     "Marianna's Lasagna recipe shared during the January session is now available for download!"
                 </p>
                 <div class="mt-auto">
-                    <a href="#" class="inline-flex items-center gap-2 text-[10px] font-black text-[#0064d2] uppercase tracking-widest hover:gap-4 transition-all text-nowrap">
+                    <a href="#" class="inline-flex items-center gap-2 text-[10px] font-black text-[#0064d2] uppercase tracking-widest hover:gap-4 transition-all">
                         View Recipe Details <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
@@ -302,7 +304,7 @@
                         <span class="text-3xl font-black leading-none">27</span>
                     </div>
                     <div>
-                        <h4 class="font-black text-slate-900 leading-tight text-nowrap">Feb Session</h4>
+                        <h4 class="font-black text-slate-900 leading-tight">Feb Session</h4>
                         <p class="text-xs text-slate-400 font-bold uppercase mt-1">Emma Dolan (Host)</p>
                     </div>
                 </div>
@@ -337,7 +339,7 @@
                 <div class="space-y-2">
                     <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tighter">Learning Repository</h2>
                     <div class="flex gap-2 pt-2 overflow-x-auto no-scrollbar">
-                        <button onclick="filterQuarter('Q1')" id="tab-Q1" class="quarter-tab active px-6 py-2 text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-all">Q1 (Jan-Mar)</button>
+                        <button onclick="filterQuarter('Q1')" id="tab-Q1" class="quarter-tab active px-6 py-2 text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-all">Q1</button>
                         <button onclick="filterQuarter('Q2')" id="tab-Q2" class="quarter-tab px-6 py-2 text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-all">Q2</button>
                         <button onclick="filterQuarter('Q3')" id="tab-Q3" class="quarter-tab px-6 py-2 text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-all">Q3</button>
                         <button onclick="filterQuarter('Q4')" id="tab-Q4" class="quarter-tab px-6 py-2 text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-all">Q4</button>
